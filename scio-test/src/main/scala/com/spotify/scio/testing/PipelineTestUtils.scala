@@ -38,7 +38,7 @@ trait PipelineTestUtils {
   def runWithContext[T](fn: ScioContext => T): ScioResult = {
     val sc = ScioContext.forTest()
     fn(sc)
-    sc.close()
+    sc.close().waitUntilFinish()
   }
 
   /**
